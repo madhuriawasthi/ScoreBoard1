@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="dataSource" uuid="d3566572-ec89-4a5b-b265-378ef9bc14c3">
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/src/main/resources/applicationContext.xml</remarks>
+      <jdbc-driver>${jdbc.driverClassName}</jdbc-driver>
+      <jdbc-url>${jdbc.url}</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="jdbc-test" uuid="bb85084c-3390-4c7b-bf6f-62601b272475">
+      <driver-ref>hsqldb.remote</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/src/test/resources/jdbc-test.properties</remarks>
+      <jdbc-driver>org.hsqldb.jdbcDriver</jdbc-driver>
+      <jdbc-url>jdbc:hsqldb:mem:scoreboard</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="jdbc" uuid="fbeca402-c6f6-4e7d-9b76-ea258273b2a8">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/src/main/resources/jdbc.properties</remarks>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost/scoreboard?allowMultiQueries=true</jdbc-url>
+      <driver-properties>
+        <property name="autoReconnect" value="true" />
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
+        <property name="tinyInt1isBit" value="false" />
+        <property name="characterEncoding" value="utf8" />
+        <property name="characterSetResults" value="utf8" />
+        <property name="yearIsDateType" value="false" />
+      </driver-properties>
+    </data-source>
+    <data-source source="LOCAL" name="dataSource" uuid="db36ed9d-e22f-4f3d-a98c-48565bac8b82">
+      <driver-ref>hsqldb.remote</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/src/test/resources/applicationContext-test.xml</remarks>
+      <jdbc-driver>org.hsqldb.jdbcDriver</jdbc-driver>
+      <jdbc-url>jdbc:hsqldb:mem:scoreboard</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="dataSource" uuid="09e8d08b-30ba-4569-996c-d254945dfb16">
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/src/main/resources/applicationContext.xml</remarks>
+      <jdbc-driver>${jdbc.driverClassName}</jdbc-driver>
+      <jdbc-url>${jdbc.url}</jdbc-url>
+    </data-source>
+  </component>
+</project>

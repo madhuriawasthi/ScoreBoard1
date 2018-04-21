@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+  ~ ScoreBoard
+  ~ Copyright (C) 2012-2013 Frank Bille
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="utf-8">
+	<title><wicket:message key="title" /></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/datepicker.css" rel="stylesheet">
+	<link href="css/scoreboard.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .chart-toggle {
+        cursor: pointer;
+      }
+      .chart-toggle:hover {
+        color: #005580;
+      }
+    </style>
+	<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+</head>
+<body>
+	<span wicket:id="menu"></span>
+
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12">
+				<wicket:child />
+
+				<hr>
+
+				<footer>
+					<p>
+						&copy;
+						<span wicket:id="copyrightDate"></span>.
+						<a href="https://github.com/frankbille/ScoreBoard" class="btn btn-small btn-inverse"><i class="icon-github"></i> <wicket:message key="gitHubProject" /></a>
+						<a href="https://github.com/frankbille/ScoreBoard/issues" class="btn btn-small btn-inverse"><wicket:message key="gitHubIssues" /></a>
+					</p>
+				</footer>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+</body>
+</html>

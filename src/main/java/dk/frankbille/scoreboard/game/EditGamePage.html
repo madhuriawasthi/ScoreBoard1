@@ -1,0 +1,64 @@
+<!--
+  ~ ScoreBoard
+  ~ Copyright (C) 2012-2013 Frank Bille
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+<h1 wicket:id="editGameTitle"></h1>
+
+<form wicket:id="form" class="form-horizontal">
+	
+	<div class="control-group">
+		<div class="controls">
+			<span wicket:id="feedback"></span>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label wicket:for="gameDate" class="control-label"><wicket:message key="date" /></label>
+		<div class="controls">
+			<input type="text" wicket:id="gameDate" class="span2" />
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label wicket:for="leagueField:select" class="control-label"><wicket:message key="league" /></label>
+		<div class="controls">
+			<span wicket:id="leagueField" class="span4"></span>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<div class="controls">
+			<h3><wicket:message key="team1"/></h3>
+		</div>
+	</div>
+	
+	<span wicket:id="team1"></span>
+	
+	<div class="control-group">
+		<div class="controls">
+			<h3><wicket:message key="team2"/></h3>
+		</div>
+	</div>
+	
+	<span wicket:id="team2"></span>
+
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary"><wicket:message key="save"/></button>
+	</div>
+</form>
+</wicket:extend>

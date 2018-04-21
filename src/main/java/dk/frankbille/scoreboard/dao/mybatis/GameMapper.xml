@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ ScoreBoard
+  ~ Copyright (C) 2012-2013 Frank Bille
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dk.frankbille.scoreboard.dao.mybatis.GameMapper">
+	<insert id="insertGame" parameterType="dk.frankbille.scoreboard.domain.Game" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO
+			game
+		(
+			game_date,
+			team1_id,
+			team2_id,
+			league_id
+		)
+		VALUES
+		(
+			#{date},
+			#{team1.id},
+			#{team2.id},
+			#{league.id}
+		)
+	</insert>
+
+	<update id="updateGame" parameterType="dk.frankbille.scoreboard.domain.Game">
+		UPDATE
+			game
+		SET
+			game_date = #{date},
+			team1_id = #{team1.id},
+			team2_id = #{team2.id},
+			league_id = #{league.id}
+		WHERE
+			id = #{id}
+	</update>
+
+	<select id="getAllGames" resultMap="GameWithDetails">
+		SELECT
+			game.id AS gameId,
+			game.game_date AS gameDate,
+			league.id AS leagueId,
+			league.name AS leagueName,
+			/* Team 1 */
+			game_team1.id AS team1gameTeamId,
+			game_team1.score AS team1gameTeamScore,
+			team1.id AS team1teamId,
+			team1.name AS team1teamName,
+			player1.id AS team1playerId,
+			player1.name AS team1playerName,
+			player1.full_name AS team1playerFullName,
+			player1.group_name AS team1playerGroupName,
+			/* Team 2 */
+			game_team2.id AS team2gameTeamId,
+			game_team2.score AS team2gameTeamScore,
+			team2.id AS team2teamId,
+			team2.name AS team2teamName,
+			player2.id AS team2playerId,
+			player2.name AS team2playerName,
+			player2.full_name AS team2playerFullName,
+			player2.group_name AS team2playerGroupName
+		FROM
+			game
+			LEFT JOIN
+			league ON game.league_id=league.id
+			/* Team 1 */
+			LEFT JOIN
+			game_team AS game_team1 ON game.team1_id=game_team1.id
+			LEFT JOIN
+			team AS team1 ON game_team1.team_id=team1.id
+			LEFT JOIN
+			team_players AS team_players1 ON team1.id=team_players1.team_id
+			LEFT JOIN
+			player AS player1 ON team_players1.player_id=player1.id
+			/* Team 2 */
+			LEFT JOIN
+			game_team AS game_team2 ON game.team2_id=game_team2.id
+			LEFT JOIN
+			team AS team2 ON game_team2.team_id=team2.id
+			LEFT JOIN
+			team_players AS team_players2 ON team2.id=team_players2.team_id
+			LEFT JOIN
+			player AS player2 ON team_players2.player_id=player2.id
+	</select>
+
+	<select id="getAllGamesByLeague" resultMap="GameWithDetails" parameterType="dk.frankbille.scoreboard.domain.League">
+		SELECT
+			game.id AS gameId,
+			game.game_date AS gameDate,
+			league.id AS leagueId,
+			league.name AS leagueName,
+			/* Team 1 */
+			game_team1.id AS team1gameTeamId,
+			game_team1.score AS team1gameTeamScore,
+			team1.id AS team1teamId,
+			team1.name AS team1teamName,
+			player1.id AS team1playerId,
+			player1.name AS team1playerName,
+			player1.full_name AS team1playerFullName,
+			player1.group_name AS team1playerGroupName,
+			/* Team 2 */
+			game_team2.id AS team2gameTeamId,
+			game_team2.score AS team2gameTeamScore,
+			team2.id AS team2teamId,
+			team2.name AS team2teamName,
+			player2.id AS team2playerId,
+			player2.name AS team2playerName,
+			player2.full_name AS team2playerFullName,
+			player2.group_name AS team2playerGroupName
+		FROM
+			game
+			LEFT JOIN
+			league ON game.league_id=league.id
+			/* Team 1 */
+			LEFT JOIN
+			game_team AS game_team1 ON game.team1_id=game_team1.id
+			LEFT JOIN
+			team AS team1 ON game_team1.team_id=team1.id
+			LEFT JOIN
+			team_players AS team_players1 ON team1.id=team_players1.team_id
+			LEFT JOIN
+			player AS player1 ON team_players1.player_id=player1.id
+			/* Team 2 */
+			LEFT JOIN
+			game_team AS game_team2 ON game.team2_id=game_team2.id
+			LEFT JOIN
+			team AS team2 ON game_team2.team_id=team2.id
+			LEFT JOIN
+			team_players AS team_players2 ON team2.id=team_players2.team_id
+			LEFT JOIN
+			player AS player2 ON team_players2.player_id=player2.id
+		WHERE
+			league.id = #{id}
+	</select>
+
+	<select id="getGame" resultMap="GameWithDetails">
+		SELECT
+			game.id AS gameId,
+			game.game_date AS gameDate,
+			league.id AS leagueId,
+			league.name AS leagueName,
+			/* Team 1 */
+			game_team1.id AS team1gameTeamId,
+			game_team1.score AS team1gameTeamScore,
+			team1.id AS team1teamId,
+			team1.name AS team1teamName,
+			player1.id AS team1playerId,
+			player1.name AS team1playerName,
+			player1.full_name AS team1playerFullName,
+			player1.group_name AS team1playerGroupName,
+			/* Team 2 */
+			game_team2.id AS team2gameTeamId,
+			game_team2.score AS team2gameTeamScore,
+			team2.id AS team2teamId,
+			team2.name AS team2teamName,
+			player2.id AS team2playerId,
+			player2.name AS team2playerName,
+			player2.full_name AS team2playerFullName,
+			player2.group_name AS team2playerGroupName
+		FROM
+			game
+			LEFT JOIN
+			league ON game.league_id=league.id
+			/* Team 1 */
+			LEFT JOIN
+			game_team AS game_team1 ON game.team1_id=game_team1.id
+			LEFT JOIN
+			team AS team1 ON game_team1.team_id=team1.id
+			LEFT JOIN
+			team_players AS team_players1 ON team1.id=team_players1.team_id
+			LEFT JOIN
+			player AS player1 ON team_players1.player_id=player1.id
+			/* Team 2 */
+			LEFT JOIN
+			game_team AS game_team2 ON game.team2_id=game_team2.id
+			LEFT JOIN
+			team AS team2 ON game_team2.team_id=team2.id
+			LEFT JOIN
+			team_players AS team_players2 ON team2.id=team_players2.team_id
+			LEFT JOIN
+			player AS player2 ON team_players2.player_id=player2.id
+		WHERE
+			game.id = #{gameId}
+	</select>
+
+	<resultMap id="GameWithDetails" type="dk.frankbille.scoreboard.domain.Game">
+		<id property="id" column="gameId" />
+		<result property="date" column="gameDate" jdbcType="DATE" />
+		<association property="team1" columnPrefix="team1" resultMap="GameTeamWithDetails"/>
+		<association property="team2" columnPrefix="team2" resultMap="GameTeamWithDetails"/>
+		<association property="league" resultMap="League"/>
+	</resultMap>
+
+	<resultMap id="GameTeamWithDetails" type="dk.frankbille.scoreboard.domain.GameTeam">
+		<id property="id" column="gameTeamId"/>
+		<result property="score" column="gameTeamScore"/>
+		<association property="team" resultMap="TeamWithDetails"/>
+	</resultMap>
+
+	<resultMap id="TeamWithDetails" type="dk.frankbille.scoreboard.domain.Team">
+		<id property="id" column="teamId"/>
+		<result property="name" column="teamName"/>
+		<collection property="players" column="teamId"
+			ofType="dk.frankbille.scoreboard.domain.Player" javaType="ArrayList"
+			resultMap="Player" />
+	</resultMap>
+
+	<resultMap id="Player" type="dk.frankbille.scoreboard.domain.Player">
+		<id property="id" column="playerId"/>
+		<result property="name" column="playerName"/>
+		<result property="fullName" column="playerFullName"/>
+		<result property="groupName" column="playerGroupName"/>
+	</resultMap>
+
+	<resultMap id="League" type="dk.frankbille.scoreboard.domain.League">
+		<id property="id" column="leagueId"/>
+		<result property="name" column="leagueName"/>
+	</resultMap>
+</mapper>

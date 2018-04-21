@@ -1,0 +1,62 @@
+<!--
+  ~ ScoreBoard
+  ~ Copyright (C) 2012-2018 Frank Bille
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+<form wicket:id="playerForm" class="form-horizontal">
+	<div class="control-group">
+		<div class="controls">
+			<h1 wicket:id="name"></h1>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<div class="controls">
+			<ul wicket:id="feedback"></ul>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label wicket:for="nameField" class="control-label"><wicket:message key="name"/></label>
+		<div class="controls">
+			<input type="text" wicket:id="nameField" class="span4" wicket:message="placeholder:name"/>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label wicket:for="fullNameField" class="control-label"><wicket:message key="fullName"/></label>
+		<div class="controls">
+			<input type="text" wicket:id="fullNameField" class="span4" wicket:message="placeholder:fullName"/>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label wicket:for=groupField class="control-label"><wicket:message key="group"/></label>
+		<div class="controls">
+			<input type="text" wicket:id="groupField" class="span4" wicket:message="placeholder:group"/>
+		</div>
+	</div>
+	
+	<span wicket:id="userFields"></span>
+		
+	<div class="form-actions">
+		<!--<input type="submit" value="delete" wicket:message="value:save" class="btn btn-primary"/>-->
+		<input type="submit"  value="delete" class="btn btn-primary"/>
+
+	</div>
+</form>
+</wicket:extend>

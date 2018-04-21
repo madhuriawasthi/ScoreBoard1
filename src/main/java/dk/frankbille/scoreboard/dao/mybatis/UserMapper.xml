@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ ScoreBoard
+  ~ Copyright (C) 2012-2013 Frank Bille
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dk.frankbille.scoreboard.dao.mybatis.UserMapper">
+	<insert id="insertUser" parameterType="dk.frankbille.scoreboard.domain.User">
+		INSERT INTO
+			systemuser
+		(
+			username,
+			password,
+			default_league_id
+		)
+		VALUES
+		(
+			#{user.username},
+			#{password},
+			#{user.defaultLeague.id}
+		)
+	</insert>
+
+	<update id="updateUser" parameterType="dk.frankbille.scoreboard.domain.User">
+		UPDATE
+			systemuser
+		SET
+			player_id = #{player.id},
+			default_league_id = #{defaultLeague.id}
+		WHERE
+			username = #{username}
+	</update>
+
+	<select id="getUserWithUsername" resultMap="User">
+		SELECT
+			username,
+			player.id AS playerId,
+			player.name AS playerName,
+			player.full_name AS playerFullName,
+			player.group_name AS playerGroupName,
+			league.id AS leagueId,
+			league.name AS leagueName,
+            league.active AS leagueActive
+		FROM
+			systemuser
+			LEFT JOIN
+			player ON systemuser.player_id=player.id
+			LEFT JOIN
+			league ON systemuser.default_league_id=league.id
+		WHERE
+			username = #{username}
+	</select>
+
+	<select id="getUserForPlayer" resultMap="User">
+		SELECT
+			username,
+			player.id AS playerId,
+			player.name AS playerName,
+			player.full_name AS playerFullName,
+			player.group_name AS playerGroupName,
+			league.id AS leagueId,
+			league.name AS leagueName,
+			league.active AS leagueActive
+		FROM
+			systemuser
+			LEFT JOIN
+			player ON systemuser.player_id=player.id
+			LEFT JOIN
+			league ON systemuser.default_league_id=league.id
+		WHERE
+			player_id = #{id}
+	</select>
+
+	<select id="authenticate" resultMap="User">
+		SELECT
+			username,
+			player.id AS playerId,
+			player.name AS playerName,
+			player.full_name AS playerFullName,
+			player.group_name AS playerGroupName,
+			league.id AS leagueId,
+			league.name AS leagueName,
+            league.active AS leagueActive
+		FROM
+			systemuser
+			LEFT JOIN
+			player ON systemuser.player_id=player.id
+			LEFT JOIN
+			league ON systemuser.default_league_id=league.id
+		WHERE
+			username = #{username}
+			AND
+			password = #{password}
+	</select>
+
+	<resultMap id="User" type="dk.frankbille.scoreboard.domain.User">
+		<result property="username" column="username"/>
+		<result property="password" column="password"/>
+		<association property="player" resultMap="Player"/>
+		<association property="defaultLeague" resultMap="League"/>
+	</resultMap>
+
+	<resultMap id="Player" type="dk.frankbille.scoreboard.domain.Player">
+		<id property="id" column="playerId"/>
+		<result property="name" column="playerName"/>
+		<result property="fullName" column="playerFullName"/>
+		<result property="groupName" column="playerGroupName"/>
+	</resultMap>
+
+	<resultMap id="League" type="dk.frankbille.scoreboard.domain.League">
+		<id property="id" column="leagueId"/>
+		<result property="name" column="leagueName"/>
+        <result property="active" column="leagueActive"/>
+	</resultMap>
+</mapper>

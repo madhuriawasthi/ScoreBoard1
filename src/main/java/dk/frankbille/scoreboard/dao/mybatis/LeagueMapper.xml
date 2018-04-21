@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ ScoreBoard
+  ~ Copyright (C) 2012-2013 Frank Bille
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dk.frankbille.scoreboard.dao.mybatis.LeagueMapper">
+	<insert id="insertLeague" parameterType="dk.frankbille.scoreboard.domain.League" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO
+			league
+		(
+			name,
+            active
+		)
+		VALUES
+		(
+			#{name},
+            #{active}
+		)
+	</insert>
+
+	<update id="updateLeague" parameterType="dk.frankbille.scoreboard.domain.League">
+		UPDATE
+			league
+		SET
+			name = #{name},
+            active = #{active},
+            rating_calculator = #{ratingCalculator}
+		WHERE
+			id = #{id}
+	</update>
+
+	<select id="getLeagues" resultType="dk.frankbille.scoreboard.domain.League">
+		SELECT
+			id,
+			name,
+            active,
+            rating_calculator AS ratingCalculator
+		FROM
+			league
+		ORDER BY
+			name
+	</select>
+
+	<select id="getLeague" resultType="dk.frankbille.scoreboard.domain.League" parameterType="java.lang.Long">
+		SELECT
+			id,
+			name,
+            active,
+            rating_calculator AS ratingCalculator
+		FROM
+			league
+		WHERE
+			id = #{leagueId}
+	</select>
+</mapper>
