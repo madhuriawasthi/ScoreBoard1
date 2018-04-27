@@ -17,80 +17,89 @@
   -->
 
 <wicket:extend>
-<div class="row-fluid">
-	<div class="span6">
-		<form wicket:id="loginForm" class="form-horizontal">
-			<p wicket:id="loginMessages"></p>
-			
-			<div class="control-group">
-				<div class="controls">
-					<h1><wicket:message key="login"></wicket:message></h1>
+	<div class="row-fluid">
+		<div class="span6">
+
+			<form wicket:id="loginForm" class="form-horizontal">
+				<p wicket:id="loginMessages"></p>
+
+				<div class="control-group">
+					<div class="controls">
+						<h1><wicket:message key="login"></wicket:message></h1>
+					</div>
 				</div>
-			</div>
-		
-			<div class="control-group">
-				<label wicket:for="usernameField" class="control-label"><wicket:message key="username"/></label>
-				<div class="controls">
-					<input type="text" wicket:id="usernameField" wicket:message="placeholder:username"/>
+
+				<div class="control-group">
+					<label wicket:for="usernameField" class="control-label"><wicket:message key="username"/></label>
+					<div class="controls">
+						<input type="text" wicket:id="usernameField" wicket:message="placeholder:username"/>
+					</div>
 				</div>
-			</div>
-		
-			<div class="control-group">
-				<label wicket:for="passwordField" class="control-label"><wicket:message key="password"/></label>
-				<div class="controls">
-					<input type="password" wicket:id="passwordField" wicket:message="placeholder:password"/>
+
+				<div class="control-group">
+					<label wicket:for="passwordField" class="control-label"><wicket:message key="password"/></label>
+					<div class="controls">
+						<input type="password" wicket:id="passwordField" wicket:message="placeholder:password"/>
+					</div>
 				</div>
-			</div>
-		
-			<div class="control-group">
-				<div class="controls">
-					<label class="checkbox">
-						<input type="checkbox" wicket:id="persistentField"> <wicket:message key="loginPersistence"/>
-					</label>
+
+				<div class="control-group">
+					<div class="controls">
+						<label class="checkbox">
+							<input type="checkbox" wicket:id="persistentField"> <wicket:message key="loginPersistence"/>
+						</label>
+					</div>
 				</div>
-			</div>
-		
-			<div class="form-actions">
-				<input type="submit" wicket:message="value:login" class="btn btn-primary"/>
-			</div>
-		</form>
+
+				<div class="form-actions">
+					<input type="submit" wicket:message="value:login" class="btn btn-primary"/>
+					<input type="submit" wicket:id="restoreP" wicket:message="value:restorepassword" class="btn btn-primary"/>
+				</div>
+
+
+			</form>
+
+		</div>
+
+
+		<div class="span6">
+			<form wicket:id="createUserForm" class="form-horizontal">
+				<p wicket:id="createUserMessages"></p>
+
+				<div class="control-group">
+					<div class="controls">
+						<h1><wicket:message key="createUser"></wicket:message></h1>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label wicket:for="usernameField" class="control-label"><wicket:message key="username"/></label>
+					<div class="controls">
+						<input type="text" wicket:id="usernameField" wicket:message="placeholder:username"/>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label wicket:for="passwordField" class="control-label"><wicket:message key="password"/></label>
+					<div class="controls">
+						<input type="password" wicket:id="passwordField" wicket:message="placeholder:password"/>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label wicket:for="repeatPasswordField" class="control-label"><wicket:message key="passwordRepeat"/></label>
+					<div class="controls">
+						<input type="password" wicket:id="repeatPasswordField" wicket:message="placeholder:passwordRepeat"/>
+					</div>
+				</div>
+
+				<div class="form-actions">
+					<input type="submit" wicket:message="value:createUser" class="btn btn-primary"/>
+				</div>
+			</form>
+		</div>
+
 	</div>
-	<div class="span6">
-		<form wicket:id="createUserForm" class="form-horizontal">
-			<p wicket:id="createUserMessages"></p>
-			
-			<div class="control-group">
-				<div class="controls">
-					<h1><wicket:message key="createUser"></wicket:message></h1>
-				</div>
-			</div>
-		
-			<div class="control-group">
-				<label wicket:for="usernameField" class="control-label"><wicket:message key="username"/></label>
-				<div class="controls">
-					<input type="text" wicket:id="usernameField" wicket:message="placeholder:username"/>
-				</div>
-			</div>
-		
-			<div class="control-group">
-				<label wicket:for="passwordField" class="control-label"><wicket:message key="password"/></label>
-				<div class="controls">
-					<input type="password" wicket:id="passwordField" wicket:message="placeholder:password"/>
-				</div>
-			</div>
-		
-			<div class="control-group">
-				<label wicket:for="repeatPasswordField" class="control-label"><wicket:message key="passwordRepeat"/></label>
-				<div class="controls">
-					<input type="password" wicket:id="repeatPasswordField" wicket:message="placeholder:passwordRepeat"/>
-				</div>
-			</div>
-		
-			<div class="form-actions">
-				<input type="submit" wicket:message="value:createUser" class="btn btn-primary"/>
-			</div>
-		</form>
-	</div>
-</div>
+
 
 </wicket:extend>

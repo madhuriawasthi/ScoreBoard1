@@ -47,6 +47,17 @@
 			username = #{username}
 	</update>
 
+
+	<update id="updatePassword" parameterType="dk.frankbille.scoreboard.domain.User">
+		UPDATE
+		systemuser
+		SET
+		password = #{password}
+		WHERE
+		username = #{username}
+	</update>
+
+
 	<select id="getUserWithUsername" resultMap="User">
 		SELECT
 			username,

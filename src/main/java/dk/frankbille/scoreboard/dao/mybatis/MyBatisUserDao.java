@@ -55,6 +55,12 @@ public class MyBatisUserDao implements UserDao {
 		userMapper.updateUser(user);
 	}
 
+
+	@Override
+	public void updatePassword(String username,String password) {
+		userMapper.updatePassword(username,EncryptionUtils.md5Encode(password));
+	}
+
 	@Override
 	public User getUserForPlayer(Player player) {
 		return userMapper.getUserForPlayer(player);

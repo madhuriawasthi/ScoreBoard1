@@ -31,6 +31,8 @@ public interface UserMapper {
 
 	int updateUser(User user);
 
+	int updatePassword(@Param("username") String username, @Param("password") String password);
+
 	User getUserWithUsername(String username);
 
 	User getUserForPlayer(Player player);

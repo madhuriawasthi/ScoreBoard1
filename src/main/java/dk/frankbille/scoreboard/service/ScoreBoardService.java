@@ -62,6 +62,8 @@ public interface ScoreBoardService {
 
 	void updateUser(User user);
 
+	void updatePassword(String username, String password);
+
 	User authenticate(String username, String password);
 
 	User getUserForPlayer(Player object);

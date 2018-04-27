@@ -1,6 +1,6 @@
 /*
  * ScoreBoard
- * Copyright (C) 2012-2013 Frank Bille
+ * Copyright (C) 2012-2018 Frank Bille
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,23 +16,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package dk.frankbille.scoreboard.dao;
+package dk.frankbille.scoreboard.comparators;
 
-import dk.frankbille.scoreboard.domain.Player;
-import dk.frankbille.scoreboard.domain.User;
+import dk.frankbille.scoreboard.domain.Game;
 
-public interface UserDao {
+import java.util.Comparator;
 
-	User authenticate(String username, String password);
+public class ReverseGameComp implements Comparator<Game> {
+    @Override
+    public int compare(Game o1, Game o2) {
+        int compare = o2.getDate().compareTo(o1.getDate());
 
-	void createUser(User user, String password);
+        if (compare == 0) {
+            compare = o2.getId().compareTo(o1.getId());
+        }
 
-	void updateUser(User user);
-
-	boolean hasUserWithUsername(String username);
-
-	void updatePassword(String username,String password);
-
-	User getUserForPlayer(Player player);
-
+        compare=-compare;
+        return compare;
+    }
 }
+

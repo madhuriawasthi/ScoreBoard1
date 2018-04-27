@@ -18,15 +18,15 @@
 
 package dk.frankbille.scoreboard.security;
 
+import dk.frankbille.scoreboard.domain.Player;
+import dk.frankbille.scoreboard.player.PlayerDeletePage;
+import dk.frankbille.scoreboard.player.PlayerEditPage;
 import org.apache.wicket.feedback.ContainerFeedbackMessageFilter;
-import org.apache.wicket.markup.html.form.CheckBox;
-import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.FormComponent;
-import org.apache.wicket.markup.html.form.PasswordTextField;
-import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.form.*;
 import org.apache.wicket.markup.html.form.validation.AbstractFormValidator;
 import org.apache.wicket.markup.html.form.validation.EqualPasswordInputValidator;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -43,6 +43,8 @@ import dk.frankbille.scoreboard.user.UsernameValidator;
 
 public class LoginPage extends BasePage {
 	private static final long serialVersionUID = 1L;
+	private IModel<User> userModel;
+
 
 	static class LoginUser extends User {
 		private static final long serialVersionUID = 1L;
@@ -90,6 +92,32 @@ public class LoginPage extends BasePage {
 		}
 	}
 
+
+
+	static class UpdateUser extends User {
+		private static final long serialVersionUID = 1L;
+
+		private String repeatPassword;
+		private String password;
+
+		public String getRepeatPassword() {
+			return repeatPassword;
+		}
+
+		public void setRepeatPassword(String repeatPassword) {
+			this.repeatPassword = repeatPassword;
+		}
+
+		public String getPassword() {
+			return password;
+		}
+
+		public void setPassword(String password) {
+			this.password = password;
+		}
+	}
+
+
 	@SpringBean
 	private ScoreBoardService scoreBoardService;
 
@@ -117,6 +145,10 @@ public class LoginPage extends BasePage {
 				authenticated();
 			}
 		};
+
+
+
+
 		add(loginForm);
 
 		loginForm.add(new FeedbackPanel("loginMessages", new ContainerFeedbackMessageFilter(loginForm)));
@@ -137,8 +169,8 @@ public class LoginPage extends BasePage {
 			@Override
 			public FormComponent<?>[] getDependentFormComponents() {
 				return new FormComponent<?>[] {
-					usernameField,
-					passwordField
+						usernameField,
+						passwordField
 				};
 			}
 
@@ -150,6 +182,14 @@ public class LoginPage extends BasePage {
 				}
 			}
 		});
+
+		loginForm.add(new Button("restoreP") {
+			@Override
+			public void onSubmit()
+			{
+				setResponsePage(RestorePassword.class);
+			}
+		}.setDefaultFormProcessing(false));
 	}
 
 	private void addCreateUser() {
@@ -190,7 +230,7 @@ public class LoginPage extends BasePage {
 
 	private void authenticated() {
 		if (ScoreBoardSession.get().isAuthenticated()) {
-            continueToOriginalDestination();
+			continueToOriginalDestination();
 		}
 	}
 
