@@ -342,6 +342,12 @@ public class DefaultScoreBoardService implements ScoreBoardService {
 		userDao.updateUser(user);
 	}
 
+
+	@Override
+	public void updatePassword(String username, String password) {
+		userDao.updatePassword(username, password);
+	}
+
 	@Transactional(readOnly = true)
 	@Override
 	public User getUserForPlayer(Player player) {

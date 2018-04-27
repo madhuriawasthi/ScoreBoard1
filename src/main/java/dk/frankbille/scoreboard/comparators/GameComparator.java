@@ -30,7 +30,7 @@ public class GameComparator implements Comparator<Game> {
 		if (compare == 0) {
 			compare = o2.getId().compareTo(o1.getId());
 		}
-
+		compare=compare;
 		return compare;
 	}
 }

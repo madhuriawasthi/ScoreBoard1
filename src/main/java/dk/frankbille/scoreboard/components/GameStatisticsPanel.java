@@ -18,7 +18,9 @@
 
 package dk.frankbille.scoreboard.components;
 
+import dk.frankbille.scoreboard.comparators.GameComparator;
 import dk.frankbille.scoreboard.comparators.PlayerComparator;
+import dk.frankbille.scoreboard.comparators.ReverseGameComp;
 import dk.frankbille.scoreboard.domain.Game;
 import dk.frankbille.scoreboard.domain.Player;
 import dk.frankbille.scoreboard.ratings.GamePlayerRatingInterface;
@@ -60,7 +62,7 @@ public class GameStatisticsPanel extends Panel {
         javascript.append("var data = google.visualization.arrayToDataTable([\n");
 
         List<Game> games = new ArrayList<Game>(gameModel.getObject());
-
+/*
         Collections.sort(games, new Comparator<Game>() {
             @Override
             public int compare(Game o1, Game o2) {
@@ -68,6 +70,8 @@ public class GameStatisticsPanel extends Panel {
                 return dateComparison == 0 ? o1.getId().compareTo(o2.getId()) : dateComparison;
             }
         });
+*/
+        Collections.sort(games, new ReverseGameComp());
 
         Set<Player> players = new HashSet<Player>();
         for (Game game : games) {
