@@ -65,11 +65,11 @@ public class PlayerDeletePage extends SecureBasePage {
 			@Override
 			protected void onSubmit() {
 				try {
-					//scoreBoardService.savePlayer(getModelObject());
-					System.out.println("clicked on delete button31");
+
+
 					System.out.println(getModelObject().getId());
 					scoreBoardService.deletePlayer(getModelObject());// Edited by Madhuri
-					System.out.println("clicked on delete button32");
+
 					User user = userModel.getObject();
 					if (user != null) {
 						scoreBoardService.updateUser(user);
