@@ -42,26 +42,26 @@ public class MyBatisPlayerDao implements PlayerDao {
 	@Override
 	public void savePlayer(Player player) {
 		if (player.getId() == null) {
-			System.out.println("clicked on save button51"+player.getName()+player.getGroupName());
+			System.out.println(player.getName()+player.getGroupName());
 			playerMapper.insertPlayer(player);
-			System.out.println("clicked on save button52");
+
 		} else {
-			System.out.println("clicked on save button53"+player.getName()+player.getGroupName());
+			System.out.println(player.getName()+player.getGroupName());
 			playerMapper.updatePlayer(player);
-			System.out.println("clicked on save button54");
+
 		}
 	}
 
 	@Override//edited by Madhuri
 	public void deletePlayer(Player player) {
 		if (player.getId() == null) {
-			System.out.println("clicked on delete button51"+player.getName()+player.getGroupName());
-		//	playerMapper.insertPlayer(player);
+			System.out.println(player.getName()+player.getGroupName());
+
 			playerMapper.deletePlayer(player);
 		} else {
-			System.out.println("clicked on delete button52"+player.getName()+player.getGroupName());
+			System.out.println(player.getName()+player.getGroupName());
 			playerMapper.deletePlayer(player);
-			System.out.println("clicked on delete button53");
+
 		}
 	}
 	@Override
