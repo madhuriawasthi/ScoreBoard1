@@ -113,6 +113,10 @@ public class PlayerStatisticsPanel extends Panel {
 				Player player = playerResult.getPlayer();
 				Player selectedPlayer = selectedPlayerModel.getObject();
 
+				// edited by shikha
+				item.add(new MouseOverBehavior(item,"playedGames","PlayerResult"));
+				item.add(new MouseOutBehavior("playedGames"));
+
 				item.add(new TooltipBehavior(new AbstractReadOnlyModel<CharSequence>() {
 					private static final long serialVersionUID = 1L;
 
