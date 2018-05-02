@@ -63,10 +63,8 @@ public class PlayerEditPage extends SecureBasePage {
 
 			@Override
 			protected void onSubmit() {
-				System.out.println("clicked on save button21");
 				System.out.println( getModelObject().getId());
 				scoreBoardService.savePlayer(getModelObject());
-				System.out.println("clicked on save button22");
 				User user = userModel.getObject();
 				if (user != null) {
 					scoreBoardService.updateUser(user);
