@@ -72,18 +72,18 @@ public class DefaultScoreBoardService implements ScoreBoardService {
 
 	@Override
 	public void savePlayer(Player player) {
-		System.out.println("clicked on save button32");
+
 		playerDao.savePlayer(player);
-		System.out.println("clicked on save button33");
+
 	}
 
 	@Override
 
 	public void deletePlayer(Player player) {
-		System.out.println("clicked on delete button41");
+
 		System.out.println (player.getId());
 		playerDao.deletePlayer(player);
-		System.out.println("clicked on delete button42");
+
 	}//Edited by Madhuri
 
 	@Transactional(readOnly=true)
