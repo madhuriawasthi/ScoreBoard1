@@ -21,6 +21,7 @@ package dk.frankbille.scoreboard.daily;
 import java.util.Collections;
 import java.util.List;
 
+import dk.frankbille.scoreboard.comparators.ReverseGameComp;
 import dk.frankbille.scoreboard.ratings.RatingCalculator;
 import dk.frankbille.scoreboard.ratings.RatingProvider;
 import org.apache.wicket.RestartResponseException;
@@ -84,7 +85,8 @@ public class DailyGamePage extends BasePage {
 
 		games = scoreBoardService.getAllGames(league);
 		ratings = RatingProvider.getRatings(league, games);
-		Collections.sort(games, new GameComparator());
+		//Collections.sort(games, new GameComparator());
+		Collections.sort(games, new ReverseGameComp());
 
     	add(new Label("leagueName", league.getName()));
 
