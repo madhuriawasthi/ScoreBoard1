@@ -52,7 +52,7 @@ public class MyBatisPlayerDao implements PlayerDao {
 		}
 	}
 
-	@Override//edited by Madhuri
+	@Override
 	public void deletePlayer(Player player) {
 		if (player.getId() == null) {
 			System.out.println(player.getName()+player.getGroupName());

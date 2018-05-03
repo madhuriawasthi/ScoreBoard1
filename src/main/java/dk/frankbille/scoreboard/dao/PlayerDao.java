@@ -25,7 +25,7 @@ import dk.frankbille.scoreboard.domain.Player;
 public interface PlayerDao {
 
 	void savePlayer(Player player);
-	void deletePlayer(Player player);//Edited by Madhuri
+	void deletePlayer(Player player);
 
 
 	List<Player> getAllPlayers();

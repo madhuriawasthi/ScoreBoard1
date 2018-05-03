@@ -49,21 +49,21 @@ public class PlayerListPage extends BasePage {
 
 			@Override
 			public void onClick() {
-				System.out.println("clicked on save button1");
+
 
 				getRequestCycle().setResponsePage(new PlayerEditPage(new Model<Player>(new Player())));
-				System.out.println("clicked on save button11");
+
 			}
 		});
-		// Edited by Madhuri
+
 		add(new SecureRenderingLink<Void>("deletePlayerLink") {
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			public void onClick() {
-				System.out.println("clicked on delete button");
+
 				getRequestCycle().setResponsePage(new PlayerDeletePage(new Model<Player>(new Player())));
-				System.out.println("clicked on delete button2");
+
 			}
 
 		});

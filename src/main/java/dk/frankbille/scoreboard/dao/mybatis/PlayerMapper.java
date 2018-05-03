@@ -27,7 +27,7 @@ public interface PlayerMapper {
 	int insertPlayer(Player player);
 
 	void updatePlayer(Player player);
-	void deletePlayer(Player player);//Edited by Madhuri
+	void deletePlayer(Player player);
 
 
 	List<Player> getPlayers();

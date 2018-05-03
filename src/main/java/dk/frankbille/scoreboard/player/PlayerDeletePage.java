@@ -68,7 +68,7 @@ public class PlayerDeletePage extends SecureBasePage {
 
 
 					System.out.println(getModelObject().getId());
-					scoreBoardService.deletePlayer(getModelObject());// Edited by Madhuri
+					scoreBoardService.deletePlayer(getModelObject());
 
 					User user = userModel.getObject();
 					if (user != null) {

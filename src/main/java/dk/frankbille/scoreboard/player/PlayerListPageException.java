@@ -54,7 +54,7 @@ public class PlayerListPageException extends BasePage {
 
 			}
 		});
-		// Edited by Madhuri
+
 		add(new SecureRenderingLink<Void>("deletePlayerLink") {
 			private static final long serialVersionUID = 1L;
 
@@ -66,7 +66,7 @@ public class PlayerListPageException extends BasePage {
 			}
 
 		});
-		// Edited end
+
 		IModel<List<Player>> playerListModel = new LoadableDetachableModel<List<Player>>() {
 			private static final long serialVersionUID = 1L;
 
