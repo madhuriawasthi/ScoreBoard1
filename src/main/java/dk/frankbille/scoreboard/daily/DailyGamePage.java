@@ -85,7 +85,7 @@ public class DailyGamePage extends BasePage {
 
 		games = scoreBoardService.getAllGames(league);
 		ratings = RatingProvider.getRatings(league, games);
-		//Collections.sort(games, new GameComparator());
+
 		Collections.sort(games, new ReverseGameComp());
 
     	add(new Label("leagueName", league.getName()));

@@ -52,8 +52,7 @@ public class RestorePassword extends BasePage {
 
                 scoreBoardService.updatePassword(user.getUsername(), user.getPassword());
                 setResponsePage(LoginPage.class);
-                // ScoreBoardSession.get().authenticate(user.getUsername(), user.getPassword());
-                //authenticated();
+
 
             }
         };
@@ -62,7 +61,6 @@ public class RestorePassword extends BasePage {
         updatePasswordForm.add(new FeedbackPanel("restorepassword", new ContainerFeedbackMessageFilter(updatePasswordForm)));
 
         final TextField<String> usernameField = new TextField<String>("usernameField", new PropertyModel<String>(user, "username"));
-        //usernameField.add(new UsernameValidator(new Model<User>(user)));
         usernameField.setRequired(true);
         updatePasswordForm.add(usernameField);
 
