@@ -17,7 +17,7 @@
   -->
 
 <wicket:panel xmlns:wicket="http://wicket.apache.org">
-	<!-- edited bt shikha-->
+
 <table class="table table-bordered" id="palyerByRating">
 	<thead>
 		<tr>
@@ -25,8 +25,8 @@
 
 			<th><wicket:message key="player"/></th>
 			<th><wicket:message key="games"/></th>
-			<th class="align-right">Won</th>
-			<th class="align-right">Lose</th>
+			<th class="align-left">Won</th>
+			<th class="align-left">Lose</th>
 			<th><wicket:message key="winRatio"/></th>
 			<th><wicket:message key="rating"/></th>
 			<th><wicket:message key="trend"/></th>
@@ -38,8 +38,8 @@
 
 			<td><a wicket:id="playerLink"><span wicket:id="name"></span></a></td>
 			<td wicket:id="gamesCount"></td>
-			<td class="align-right"><i wicket:id="win" ></i> </td>
-			<td class="align-right"><i wicket:id="lose" ></i> </td>
+			<td class="align-left"><i wicket:id="win" ></i> </td>
+			<td class="align-left"><i wicket:id="lose" ></i> </td>
 			<td wicket:id="winRatio"></td>
 			<td wicket:id="rating"></td>
 			<td wicket:id="trend"></td>

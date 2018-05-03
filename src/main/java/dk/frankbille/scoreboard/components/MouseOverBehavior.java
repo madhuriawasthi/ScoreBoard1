@@ -23,11 +23,9 @@ public class MouseOverBehavior extends Behavior {
 			this.tableName = tableName;
 			
 			for(Player a : playerName1){
-				System.out.println(""+a.getId()+a.getName());
 				x = x + a.getName()+"-";
 			}
 			for(Player b : playerName2){
-				System.out.println(""+b.getId()+b.getName());
 				x = x + b.getName()+"-";
 			}
 			x = x + "zzzzz";

@@ -18,6 +18,7 @@
 
 package dk.frankbille.scoreboard.security;
 
+import dk.frankbille.scoreboard.daily.DailyGamePage;
 import dk.frankbille.scoreboard.domain.Player;
 import dk.frankbille.scoreboard.player.PlayerDeletePage;
 import dk.frankbille.scoreboard.player.PlayerEditPage;
@@ -200,8 +201,7 @@ public class LoginPage extends BasePage {
 			@Override
 			protected void onSubmit() {
 				scoreBoardService.createUser(user, user.getPassword());
-				ScoreBoardSession.get().authenticate(user.getUsername(), user.getPassword());
-				authenticated();
+				setResponsePage(LoginPage.class);
 			}
 		};
 		add(createUserForm);
@@ -230,7 +230,7 @@ public class LoginPage extends BasePage {
 
 	private void authenticated() {
 		if (ScoreBoardSession.get().isAuthenticated()) {
-			continueToOriginalDestination();
+			setResponsePage(DailyGamePage.class);
 		}
 	}
 
