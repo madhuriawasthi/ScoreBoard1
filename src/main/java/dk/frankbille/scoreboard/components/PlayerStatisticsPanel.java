@@ -113,7 +113,7 @@ public class PlayerStatisticsPanel extends Panel {
 				Player player = playerResult.getPlayer();
 				Player selectedPlayer = selectedPlayerModel.getObject();
 
-				// edited by shikha
+
 				item.add(new MouseOverBehavior(item,"playedGames","PlayerResult"));
 				item.add(new MouseOutBehavior("playedGames"));
 
@@ -149,7 +149,7 @@ public class PlayerStatisticsPanel extends Panel {
 						return item.getIndex() < 3;
 					}
 				};
-				//Edited by Madhuri
+
 				WebComponent win = new WebComponent("win") {
 					private static final long serialVersionUID = 1L;
 

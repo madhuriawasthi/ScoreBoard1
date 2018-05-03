@@ -63,7 +63,7 @@ public class PlayedGameListPanel extends Panel {
 				pp.set(0, item.getModelObject().getId());
 				BookmarkablePageLink<Void> link = new SecureExecutionBookmarkablePageLink<Void>("gameLink", EditGamePage.class, pp);
 				item.add(link);
-				// edited by shikha
+
 				item.add(new MouseOverBehavior(item,"palyerByRating","Game"));
 				item.add(new MouseOutBehavior("palyerByRating"));
 
